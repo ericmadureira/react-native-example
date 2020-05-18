@@ -1,12 +1,21 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { mockTodo } from '../constants/mock';
+import TodoItem from './TodoItem';
+
 const TodoList = () => {
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState([mockTodo]);
+
+  const list = useMemo(() => (
+    todoList.map((todo, key) => (
+      <TodoItem key={key} todo={todo} />
+    ))
+  ), [todoList]);
 
   return (
     <View style={styles.container}>
-      {todoList}
+      {list}
     </View>
   );
 };

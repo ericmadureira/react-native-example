@@ -5,7 +5,7 @@ const TodoItem = ({ todo }) => {
   const { title } = todo;
   return (
     <View style={styles.container}>
-      <Text style={styles.todo}>{title}</Text>
+      <Text style={styles.todo}>> {title}</Text>
     </View>
   );
 };
