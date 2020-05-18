@@ -1,14 +1,19 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, TextInput, View } from 'react-native';
 
 import { mockTodo } from '../constants/mock';
 import TodoItem from './TodoItem';
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([mockTodo]);
+  const [newTodoTitle, setNewTodoTitle] = useState('');
 
-  const addTodo = useCallback(newTodo => {
-    setTodoList(todoList.concat(newTodo));
+  const addTodo = useCallback(() => {
+    setTodoList(todoList.concat({ title: newTodoTitle }));
+  }, [newTodoTitle, setTodoList, todoList]);
+
+  const handleInputChange = useCallback(text => {
+    setNewTodoTitle(text);
   }, [setTodoList, todoList]);
 
   const list = useMemo(() => (
@@ -19,6 +24,10 @@ const TodoList = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.addTodoContainer}>
+        <TextInput onChangeText={handleInputChange} style={styles.addTodoInput} />
+        <Button onPress={addTodo} style={styles.addTodoButton} title='Add' />
+      </View>
       {list}
     </View>
   );
@@ -29,7 +38,19 @@ export default TodoList;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#e1e1e1',
     marginTop: 20,
+  },
+  addTodoButton: {
+    height: 30,
+  },
+  addTodoContainer: {
+    flexDirection: 'row',
+  },
+  addTodoInput: {
+    borderColor: 'gray',
+    borderWidth: 1,
+    height: 35,
+    paddingHorizontal: 8,
+    width: 200,
   },
 });
