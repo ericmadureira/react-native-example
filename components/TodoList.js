@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Button, StyleSheet, TextInput, View } from 'react-native';
+import { Button, FlatList, StyleSheet, TextInput, View } from 'react-native';
 
 import { mockTodo } from '../constants/mock';
 import TodoItem from './TodoItem';
@@ -17,9 +17,11 @@ const TodoList = () => {
   }, [setTodoList, todoList]);
 
   const list = useMemo(() => (
-    todoList.map((todo, key) => (
-      <TodoItem key={key} todo={todo} />
-    ))
+    <FlatList
+      data={todoList}
+      keyExtractor={item => item.title}
+      renderItem={({ item }) => <TodoItem todo={item} />}
+    />
   ), [todoList]);
 
   return (
