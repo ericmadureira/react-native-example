@@ -1,9 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+import TodoList from './components/TodoList';
+
 const App = () => (
   <View style={styles.container}>
     <Text style={styles.title}>To-do List</Text>
+    <TodoList />
   </View>
 );
 
