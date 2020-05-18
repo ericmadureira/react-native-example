@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { mockTodo } from '../constants/mock';
@@ -6,6 +6,10 @@ import TodoItem from './TodoItem';
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([mockTodo]);
+
+  const addTodo = useCallback(newTodo => {
+    setTodoList(todoList.concat(newTodo));
+  }, [setTodoList, todoList]);
 
   const list = useMemo(() => (
     todoList.map((todo, key) => (
