@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const TodoItem = ({ removeTodo, todo }) => {
   const { id, title } = todo;
+  const [pressed, setPressed] = useState(false);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.todo}>{title}</Text>
+      <Text
+        onPress={() => setPressed(!pressed)}
+        style={pressed ? styles.todoPressed : styles.todo}>{title}
+      </Text>
       <TouchableOpacity onPress={() => removeTodo(id)} style={styles.removeButton}>
         <Text style={styles.removeButtonText}>X</Text>
       </TouchableOpacity>
@@ -40,5 +44,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingHorizontal: 6,
     paddingVertical: 2,
+  },
+  todoPressed: {
+    alignItems: 'flex-start',
+    fontSize: 16,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    color: '#e1e1e1',
   },
 });
