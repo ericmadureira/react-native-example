@@ -25,6 +25,7 @@ const TodoList = () => {
 
   const list = useMemo(() => (
     <FlatList
+    contentContainerStyle={styles.list}
       data={todoList}
       keyExtractor={item => item.id}
       renderItem={({ item }) => <TodoItem removeTodo={removeTodo} todo={item} />}
@@ -57,14 +58,15 @@ const inputShadow = {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     marginTop: 20,
+    width: '70%',
   },
   addTodoButton: {
     height: 30,
   },
   addTodoContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
     ...inputShadow,
   },
   addTodoInput: {
@@ -73,5 +75,8 @@ const styles = StyleSheet.create({
     height: 35,
     paddingHorizontal: 8,
     width: 200,
+  },
+  list: {
+    justifyContent: 'flex-start',
   },
 });

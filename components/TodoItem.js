@@ -35,13 +35,15 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
     marginTop: 20,
   },
   removeButton: {
     alignContent: 'center',
     backgroundColor: 'red',
     borderRadius: 2,
+    marginLeft: 7,
     paddingHorizontal: 6,
     paddingVertical: 2,
     ...buttonShadow,
@@ -54,12 +56,15 @@ const styles = StyleSheet.create({
   todo: {
     alignItems: 'flex-start',
     fontSize: 16,
+    flexWrap: 'wrap',
     paddingHorizontal: 6,
     paddingVertical: 2,
+    paddingRight: 0,
   },
   todoPressed: {
     alignItems: 'flex-start',
     fontSize: 16,
+    flexWrap: 'wrap',
     paddingHorizontal: 6,
     paddingVertical: 2,
     color: '#e1e1e1',
