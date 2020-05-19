@@ -34,7 +34,7 @@ const TodoList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.addTodoContainer}>
-        <TextInput onChangeText={handleInputChange} style={styles.addTodoInput} />
+        <TextInput onChangeText={handleInputChange} placeholder='Your task here...' style={styles.addTodoInput} />
         <Button onPress={addTodo} style={styles.addTodoButton} title='Add' />
       </View>
       {list}
@@ -43,6 +43,17 @@ const TodoList = () => {
 };
 
 export default TodoList;
+
+const inputShadow = {
+  elevation: 9,
+  shadowColor: '#000',
+  shadowOffset: {
+    width: 0,
+    height: 4,
+  },
+  shadowOpacity: 0.32,
+  shadowRadius: 5.46,
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -54,6 +65,7 @@ const styles = StyleSheet.create({
   },
   addTodoContainer: {
     flexDirection: 'row',
+    ...inputShadow,
   },
   addTodoInput: {
     borderColor: 'gray',

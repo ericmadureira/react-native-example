@@ -20,6 +20,17 @@ const TodoItem = ({ removeTodo, todo }) => {
 
 export default TodoItem;
 
+const buttonShadow = {
+  elevation: 4,
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.23,
+  shadowRadius: 2.62,
+};
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -33,6 +44,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     paddingHorizontal: 6,
     paddingVertical: 2,
+    ...buttonShadow,
   },
   removeButtonText: {
     color: '#fff',
