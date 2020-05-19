@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Button, FlatList, StyleSheet, TextInput, View } from 'react-native';
+import { v4 as uuid } from 'uuid';
 
 import { mockTodo } from '../constants/mock';
 import TodoItem from './TodoItem';
@@ -9,7 +10,10 @@ const TodoList = () => {
   const [newTodoTitle, setNewTodoTitle] = useState('');
 
   const addTodo = useCallback(() => {
-    setTodoList(todoList.concat({ title: newTodoTitle }));
+    setTodoList(todoList.concat({
+      id: uuid(),
+      title: newTodoTitle,
+    }));
   }, [newTodoTitle, setTodoList, todoList]);
 
   const handleInputChange = useCallback(text => {
