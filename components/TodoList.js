@@ -20,11 +20,15 @@ const TodoList = () => {
     setNewTodoTitle(text);
   }, [setTodoList, todoList]);
 
+  const removeTodo = useCallback(removedId => {
+    setTodoList(todoList.filter(todo => todo.id !== removedId));
+  }, [setTodoList, todoList]);
+
   const list = useMemo(() => (
     <FlatList
       data={todoList}
       keyExtractor={item => item.title}
-      renderItem={({ item }) => <TodoItem todo={item} />}
+      renderItem={({ item }) => <TodoItem removeTodo={removeTodo} todo={item} />}
     />
   ), [todoList]);
 
