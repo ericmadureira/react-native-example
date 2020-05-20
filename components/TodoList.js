@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Button, FlatList, StyleSheet, TextInput, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { mockTodo } from '../constants/mock';
 import TodoItem from './TodoItem';
@@ -25,7 +25,7 @@ const TodoList = () => {
 
   const list = useMemo(() => (
     <FlatList
-    contentContainerStyle={styles.list}
+      contentContainerStyle={styles.list}
       data={todoList}
       keyExtractor={item => item.id}
       renderItem={({ item }) => <TodoItem removeTodo={removeTodo} todo={item} />}
@@ -40,7 +40,9 @@ const TodoList = () => {
           onChangeText={handleInputChange}
           placeholder='Your task here...'
           style={styles.addTodoInput} />
-        <Button onPress={addTodo} style={styles.addTodoButton} title='Add' />
+          <TouchableOpacity onPress={() => addTodo()} style={styles.addTodoButton}>
+            <Text style={styles.addTodoButtonText}>ADD</Text>
+          </TouchableOpacity>
       </View>
       {list}
     </View>
@@ -66,7 +68,18 @@ const styles = StyleSheet.create({
     width: '70%',
   },
   addTodoButton: {
-    height: 30,
+    backgroundColor: '#000',
+    borderColor: '#000',
+    borderRadius: 3,
+    borderBottomLeftRadius: 0,
+    borderTopLeftRadius: 0,
+    borderWidth: 1,
+    height: 35,
+    justifyContent: 'center',
+    paddingHorizontal: 6,
+  },
+  addTodoButtonText: {
+    color: '#fff',
   },
   addTodoContainer: {
     flexDirection: 'row',
@@ -76,6 +89,9 @@ const styles = StyleSheet.create({
   addTodoInput: {
     borderColor: 'gray',
     borderWidth: 1,
+    borderRightWidth: 0,
+    borderBottomLeftRadius: 3,
+    borderTopLeftRadius: 3,
     height: 35,
     paddingHorizontal: 8,
     width: 200,
