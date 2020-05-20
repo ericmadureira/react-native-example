@@ -35,7 +35,11 @@ const TodoList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.addTodoContainer}>
-        <TextInput onChangeText={handleInputChange} placeholder='Your task here...' style={styles.addTodoInput} />
+        <TextInput
+          autoFocus
+          onChangeText={handleInputChange}
+          placeholder='Your task here...'
+          style={styles.addTodoInput} />
         <Button onPress={addTodo} style={styles.addTodoButton} title='Add' />
       </View>
       {list}
