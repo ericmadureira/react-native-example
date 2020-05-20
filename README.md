@@ -1,6 +1,6 @@
 # To-do List
 
-- This is a to-do list made with React Native and bootstraped with expo-cli. It was made for learning purpose and I've followed no tutorials, just replicated my previous React (web) experience.
+This is a to-do list made with React Native and bootstraped with expo-cli. It was made for learning purpose and I've followed no tutorials, just replicated my previous React (web) experience.
 
 ## How to run
 1. Clone the repository
